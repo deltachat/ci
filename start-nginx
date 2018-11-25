@@ -1,0 +1,11 @@
+#!/bin/bash
+
+exec docker run \
+  -d \
+  -p 80:80 \
+  -p 443:443 \
+  -v /var/run/docker.sock:/tmp/docker.sock:ro \
+  -v /root/certs:/etc/nginx/certs \
+  --name nginx-reverse-proxy \
+  --restart always \
+  jwilder/nginx-proxy
